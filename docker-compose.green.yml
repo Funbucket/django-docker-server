@@ -4,6 +4,7 @@ services:
     build:
       context: ./server_dev
       dockerfile: Dockerfile
+    command: uwsgi --socket :8002 uwsgi.ini
     volumes:
       - ./server_dev:/srv/server_dev
       - ./log:/var/log/uwsgi
