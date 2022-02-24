@@ -12,9 +12,9 @@ script:
   - docker run -e CI=true ouchcs/django-test python3 manage.py test
 
 before_deploy:
-  - zip -r server_dev ./server_dev
+  - zip -r django-docker-server *
   - mkdir -p deploy
-  - mv server_dev.zip deploy/server_dev.zip
+  - mv server_dev.zip deploy/django-docker-server.zip
 
 deploy:
   - provider: s3
@@ -32,7 +32,7 @@ deploy:
     access_key_id: $AWS_ACCESS_KEY_ID
     secret_access_key: $AWS_SECRET_ACCESS_KEY
     bucket: server-dev-bucket
-    key: server_dev.zip
+    key: django-docker-server.zip
     bundle_type: zip
     application: server-dev-codeDeploy-service
     deployment_group: server-dev-codeDeploy-group

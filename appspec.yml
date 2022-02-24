@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source:  /
-    destination: /home/ubuntu/django-docker-server/server_dev/
+    destination: /home/ubuntu/django-docker-server/
 hooks:
   AfterInstall:
     - location: scripts/execute_deploy.sh
