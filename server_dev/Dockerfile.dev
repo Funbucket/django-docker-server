@@ -4,8 +4,6 @@ ENV PYTHONBUFFERED 1
 
 RUN apt-get -y update
 
-RUN apt-get -y install vim
-
 RUN mkdir /srv/server_dev
 
 WORKDIR /srv/server_dev
