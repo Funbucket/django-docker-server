@@ -8,6 +8,8 @@ services:
     volumes:
       - ./server_dev:/srv/server_dev
       - ./log:/var/log/uwsgi
+    ports:
+      - "8002:8000"
 
   nginx:
     restart: always

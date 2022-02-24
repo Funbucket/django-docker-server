@@ -10,3 +10,35 @@ before_install:
 
 script:
   - docker run -e CI=true ouchcs/django-test python3 manage.py test
+
+before_deploy:
+  - zip -r server_dev ./server_dev
+	- mkdir -p deploy
+	- mv server_dev.zip deploy/server_dev.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: server-dev-bucket
+    region: ap-northeast-2
+    skip_cleanup: true
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      repo: Funbucket/django-docker-server
+      branch: main
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: server-dev-bucket
+    key: server_dev.zip
+    bundle_type: zip
+    application: server-dev-codeDeploy-service
+    deployment_group: server-dev-codeDeploy-group
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      repo: Funbucket/django-docker-server
+      branch: main
+    
