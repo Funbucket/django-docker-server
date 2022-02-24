@@ -13,8 +13,8 @@ script:
 
 before_deploy:
   - zip -r server_dev ./server_dev
-	- mkdir -p deploy
-	- mv server_dev.zip deploy/server_dev.zip
+  - mkdir -p deploy
+  - mv server_dev.zip deploy/server_dev.zip
 
 deploy:
   - provider: s3
