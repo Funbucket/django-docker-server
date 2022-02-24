@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source:  /
+    destination: /home/ubuntu/django-docker-server/server_dev/
+hooks:
+  AfterInstall:
+    - location: execute_deploy.sh
+      timeout: 180
