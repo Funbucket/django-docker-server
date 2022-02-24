@@ -5,5 +5,5 @@ files:
     destination: /home/ubuntu/django-docker-server/
 hooks:
   AfterInstall:
-    - location: scripts/execute_deploy.sh
+    - location: scripts/execute-deploy.sh
       timeout: 180
