@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /home/ubuntu/django-docker-server/
+
 DOCKER_APP_NAME=django
 
 EXIST_BLUE=$(docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yml ps | grep Up)
