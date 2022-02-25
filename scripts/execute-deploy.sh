@@ -2,4 +2,4 @@
 
 echo " Deploying... "
 cd /home/ubuntu/django-docker-server/scripts
-./run-nginx.sh &
+./deploy.sh > /dev/null 2> /dev/null < /dev/null &
