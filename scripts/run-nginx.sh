@@ -6,11 +6,12 @@ EXIST_NGINX=$(docker-compose -p nginx -f docker-compose.nginx.yml ps | grep Up)
 
 if [ -z "$EXIST_NGINX" ]
 then
-  echo " nginx already running "
-else
   echo " nginx up "
-	docker-compose -p nginx -f docker-compose.nginx.yml up --build -d
+  docker-compose -p nginx -f docker-compose.nginx.yml up --build -d
+else
+  echo " nginx already running "
 fi
 
-cd /home/ubuntu/django-docker-server/scripts
-./deploy.sh > /dev/null 2> /dev/null < /dev/null &
+cd ./scripts
+./deploy.sh &
+# ./deploy.sh > /dev/null 2> /dev/null < /dev/null &
