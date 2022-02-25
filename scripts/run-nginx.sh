@@ -9,7 +9,7 @@ then
   echo " nginx already running "
 else
   echo " nginx up "
-	docker-compose -p nginx-blue -f docker-compose.nginx.yml up --build -d
+	docker-compose -p nginx -f docker-compose.nginx.yml up --build -d
 fi
 
 cd /home/ubuntu/django-docker-server/scripts
