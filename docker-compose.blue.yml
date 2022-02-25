@@ -10,15 +10,3 @@ services:
       - ./log:/var/log/uwsgi
     ports:
       - "8001:8000"
-
-  nginx:
-    restart: always
-    build:
-      context: ./nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - django
-    volumes:
-      - ./server_dev:/srv/server_dev
-      - ./log:/var/log/nginx
