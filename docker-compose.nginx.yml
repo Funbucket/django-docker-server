@@ -6,8 +6,6 @@ services:
       context: ./nginx
     ports:
       - "80:80"
-    depends_on:
-      - django
     volumes:
       - ./server_dev:/srv/server_dev
       - ./log:/var/log/nginx
